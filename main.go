@@ -35,7 +35,7 @@ func main() {
 	// wait for all goroutines to finish
 	for i := 0; i < len(urls); i++ {
 		info := <-results
-		fmt.Printf("URL: %s\nTitle: %s\n", info.URL, info.Title)
+		fmt.Printf("URL: %s\nTitle: %s\n\n", info.URL, info.Title)
 	}
 }
 
@@ -46,11 +46,10 @@ func scrapeWebsite(url string) (WebsiteInfo, error) {
 	}
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
+	_, err = ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return WebsiteInfo{}, err
 	}
-	fmt.Println(body)
 
 	info := WebsiteInfo{
 		URL:   url,
