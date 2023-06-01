@@ -50,6 +50,7 @@ func scrapeWebsite(url string) (WebsiteInfo, error) {
 	if err != nil {
 		return WebsiteInfo{}, err
 	}
+	// implement logic that processes the response body and html content
 
 	info := WebsiteInfo{
 		URL:   url,
